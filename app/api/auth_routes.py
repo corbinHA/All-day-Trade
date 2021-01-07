@@ -25,6 +25,7 @@ def authenticate():
     """
     if current_user.is_authenticated:
         return current_user.to_dict()
+    print("\n\nERROR (401): User not authenticated\n\n")
     return {'errors': ['Unauthorized']}, 401
 
 
@@ -43,6 +44,7 @@ def login():
         user = User.query.filter(User.email == form.data['email']).first()
         login_user(user)
         return user.to_dict()
+    print("\n\nERROR (401): Log in not validated\n\n")
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
@@ -64,9 +66,11 @@ def sign_up():
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         user = User(
+            fullname=form.data['fullname']
             username=form.data['username'],
             email=form.data['email'],
-            password=form.data['password']
+            password=form.data['password'],
+            balance=10000.00
         )
         db.session.add(user)
         db.session.commit()
@@ -81,3 +85,9 @@ def unauthorized():
     Returns unauthorized JSON when flask-login authentication fails
     """
     return {'errors': ['Unauthorized']}, 401
+
+
+@user_routes.route('/<id>')
+def get_user_by_id(id):
+    user = User.query.get(id)
+    return user.to_dict()
