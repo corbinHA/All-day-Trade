@@ -51,8 +51,8 @@ function App() {
         <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
           <User />
         </ProtectedRoute>
-        <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
-          <Home />
+        <ProtectedRoute path="/home" exact={true} authenticated={authenticated}>
+          {/* <Home /> */}
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

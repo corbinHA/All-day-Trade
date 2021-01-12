@@ -12,10 +12,11 @@ class Commodity(db.Model):
     low = db.Column(db.Numeric(8, 2), nullable=False)
     open_price = db.Column(db.Numeric(8, 2), nullable=False)
     last_price = db.Column(db.Numeric(8, 2), nullable=False)
+    price_date = db.Column(db.DateTime, nullable=False)
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.now())
 
-    transactions = db.relationship("Transaction", back_populates="commodity")
-    watchlists = db.relationship("Watchlist", back_populates="commodity")
+    transactions = db.relationship("Transaction", back_populates="commodities")
+    watchlists = db.relationship("Watchlist", back_populates="commodities")
 
     def to_dict(self):
         return {

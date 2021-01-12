@@ -8,10 +8,11 @@ def seed_users():
         fullname='Mortimer Duke',
         username='TheDuke',
         email='mortimerduke@aa.io',
-        password='password'
+        password='password',
+        balance=10000000.00
     )
 
-    
+
 
     db.session.add(demo)
 

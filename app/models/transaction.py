@@ -27,5 +27,5 @@ class Transaction(db.Model):
             "buy/sell": self.buy_sell,
             "created_at": self.created_at,
             "commodity": self.commodities.to_dict(),
-            "user": self.users.to_dict()
+            "users": self.users.to_dict()
         }
