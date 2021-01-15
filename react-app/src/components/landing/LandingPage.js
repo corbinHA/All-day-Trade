@@ -16,7 +16,7 @@ function LandingPage() {
             <div className="landing-page_image-container">
                 <img
                 className="landing-page_image"
-                scr="https://www.openbusinesscouncil.org/wp-content/uploads/2018/03/commodities.jpg"
+                src="https://www.openbusinesscouncil.org/wp-content/uploads/2018/03/commodities.jpg"
                 />
             </div>
         </div>

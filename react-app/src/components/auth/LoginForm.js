@@ -17,6 +17,17 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
     }
   };
 
+  const logInDemo = async (e) => {
+    e.preventDefault();
+    const emailField = document.querySelector(".email");
+    const passwordField = document.querySelector(".password");
+    if (email || password) {
+      setEmail("");
+      setPassword("");
+    }
+    emailField.value = "demo@user.io";
+    passwordField.value = "password";
+
   const updateEmail = (e) => {
     setEmail(e.target.value);
   };
@@ -56,6 +67,13 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
           onChange={updatePassword}
         />
         <button type="submit">Login</button>
+        <button
+              className="login-form__submit-button demo-button"
+              type="submit"
+              onClick={logInDemo}
+            >
+              Log in as Demo User
+        </button>
       </div>
     </form>
   );
