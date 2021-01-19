@@ -11,7 +11,7 @@ function Product() {
         className="product-link"
         href="https://github.com/corbinHA/Duke-and-Duke/wiki"
       >
-        SeedFund Wiki
+        Duke & Duke Wiki
       </a>
     </div>
   );

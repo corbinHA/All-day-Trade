@@ -13,7 +13,6 @@ class Commodity(db.Model):
     open_price = db.Column(db.Numeric(8, 2), nullable=False)
     last_price = db.Column(db.Numeric(8, 2), nullable=False)
     price_date = db.Column(db.DateTime, nullable=False)
-    created_at = db.Column(db.DateTime, nullable=False, default=datetime.now())
 
     transactions = db.relationship("Transaction", back_populates="commodities")
     watchlists = db.relationship("Watchlist", back_populates="commodities")
@@ -27,5 +26,5 @@ class Commodity(db.Model):
             "low": float(self.low),
             "open_price": float(self.open_price),
             "last_price": float(self.last_price),
-            "created_at": self.created_at
+            "price_date": self.price_date,
         }

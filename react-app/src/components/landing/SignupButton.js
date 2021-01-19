@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 const SignupButton = () => {
     return (
-        <NavLink to="/sign-up" exact={true} activeClassName="active">
+        <NavLink to="/signup" exact={true} activeClassName="active">
             <Button>Sign Up</Button>
         </NavLink>
     );
