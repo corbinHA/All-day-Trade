@@ -3,3 +3,4 @@ from .user import User
 from .commodity import Commodity
 from .watchlist import Watchlist
 from .transaction import Transaction
+from .price_point import PricePoint

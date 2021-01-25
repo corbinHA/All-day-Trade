@@ -14,8 +14,8 @@ class Transaction(db.Model):
     buy_sell = db.Column(db.Boolean, nullable=False, default=True)
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.now())
 
-    users = db.relationship("User", back_populates="transactions")
-    commodities = db.relationship("Commodity", back_populates="transactions")
+    user = db.relationship("User")
+    commodity = db.relationship("Commodity", uselist=False)
 
     def to_dict(self):
         return {
@@ -27,5 +27,5 @@ class Transaction(db.Model):
             "buy/sell": self.buy_sell,
             "created_at": self.created_at,
             "commodity": self.commodities.to_dict(),
-            "users": self.users.to_dict()
+            "user": self.user.to_dict()
         }

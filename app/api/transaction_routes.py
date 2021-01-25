@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from app.models import User, db, Transaction
 from app.forms.transaction_form import TransactionForm
 from flask_login import current_user
@@ -15,29 +15,41 @@ def getUserTransactions(user_id):
     return {"error": "Not found"}
 
 
-@transaction_routes.route('/buy', methods=["POST"])
+@transaction_routes.route('', methods=["POST"])
 def newTransaction():
-    form = TransactionForm()
-    form['csrf_token'].data = request.cookies['csrf_token']
-    if form.validate_on_submit():
-        transaction = Transaction(
-            user_id=current_user.get_id(),
-            commodity_id=form.data['commodityId'],
-            amount=form.data['amount'],
-            price=form.data['price'],
-        )
-        user = User.query.get(transaction.user_id)
-        error = ""
-        if user.balance < transaction.amount * transaction.price:
-            error = "insufficient balance to buy this commodity"
-        if error:
-            return {"error": error}, 400
-        user.balance -= transaction.amount * transaction.price
-        db.session.add(transaction)
-        db.session.commit()
-        return transaction.to_dict()
-    print(form.errors)
-    return jsonify(form.errors)
+    data = request.get_json()
+    transaction = Transaction(
+        user_id=current_user.get_id(),
+        commodity_symbol=data['symbol'],
+        amount=data['amount'],
+        price=data['price'],
+    )
+    db.session.add(transaction)
+    db.session.commit()
+    return {"result": "yay"}
+
+    # form = TransactionForm()
+    # form['csrf_token'].data = request.cookies['csrf_token']
+
+    # if form.validate_on_submit():
+    # transaction = Transaction(
+    #     user_id=current_user.get_id(),
+    #     commodity_id=form.data['commodityId'],
+    #     amount=form.data['amount'],
+    #     price=form.data['price'],
+    #     )
+    #     user = User.query.get(transaction.user_id)
+    #     error = ""
+    #     if user.balance < transaction.amount * transaction.price:
+    #         error = "insufficient balance to buy this commodity"
+    #     if error:
+    #         return {"error": error}, 400
+    #     user.balance -= transaction.amount * transaction.price
+    #     db.session.add(transaction)
+    #     db.session.commit()
+    #     return transaction.to_dict()
+    # print(form.errors)
+    # return jsonify(form.errors)
 
 
 # @transaction_routes.route('/sell', methods=["POST"])

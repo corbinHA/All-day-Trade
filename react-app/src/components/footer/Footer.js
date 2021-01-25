@@ -19,7 +19,7 @@ function Footer() {
                 >
                     <i className="fab fa-github-square"></i>
                 </a>
-                </div>
+            </div>
         </>
     );
     }

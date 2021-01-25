@@ -1,19 +1,26 @@
 from .db import db
+from sqlalchemy import Table
 from datetime import datetime
+
+
+watchlist_commodity_table = Table('watchlists-commodities', db.Model.metadata,
+                                  db.Column('watchlist_id', db.Integer,
+                                            db.ForeignKey('watchlists.id')),
+                                  db.Column('commodity_id', db.Integer,
+                                            db.ForeignKey('commodities.id'))
+                                  )
 
 
 class Watchlist(db.Model):
     __tablename__ = 'watchlists'
 
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
-    commodity_id = db.Column(db.Integer, db.ForeignKey(
-        "commodities.id"), nullable=False)
-    price = db.Column(db.Numeric(8, 2), nullable=False)
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.now())
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    user = db.relationship("User")
 
-    users = db.relationship("User", back_populates="watchlists")
-    commodities = db.relationship("Commodity", back_populates="watchlists")
+    commodities = db.relationship(
+        "Commodity", secondary=watchlist_commodity_table)
 
     def to_dict(self):
         return {

@@ -3,11 +3,12 @@ import { NavLink } from 'react-router-dom';
 import { authenticate } from '../services/auth';
 import LogoutButton from './auth/LogoutButton';
 import SignupButton from './landing/SignupButton'
+import styled from 'styled-components'
 
 const NavBar = ({ setAuthenticated, authenticated }) => {
   if (authenticated) {
     return (
-      <nav>
+      <NavContainer>
         <ul>
           <li>
             <NavLink to="/home" exact={true} activeClassName="active">
@@ -23,7 +24,7 @@ const NavBar = ({ setAuthenticated, authenticated }) => {
             <LogoutButton setAuthenticated={setAuthenticated} />
           </li>
         </ul>
-      </nav>
+      </NavContainer>
     );
   }
   else {
@@ -72,3 +73,8 @@ const NavBar = ({ setAuthenticated, authenticated }) => {
 }
 
 export default NavBar;
+
+const NavContainer = styled.nav`
+  position:sticky;
+  top: 0;
+`

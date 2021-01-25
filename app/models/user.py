@@ -13,8 +13,11 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
     balance = db.Column(db.Numeric(10, 2), nullable=False)
 
-    transactions = db.relationship("Transaction", back_populates="users")
-    watchlists = db.relationship("Watchlist", back_populates="users")
+    transactions = db.relationship("Transaction")
+    # watchlist = db.relationship(
+    #     "Watchlist", uselist=False, back_populates="users")
+    watchlist = db.relationship(
+        "Watchlist", uselist=False)
 
     @property
     def password(self):

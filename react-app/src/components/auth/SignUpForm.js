@@ -1,25 +1,33 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../services/auth';
 
-const SignUpForm = ({authenticated, setAuthenticated}) => {
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [repeatPassword, setRepeatPassword] = useState("");
+const SignUpForm = ({ authenticated, setAuthenticated }) => {
+  const [errors, setErrors] = useState([]);
+  const [fullname, setFullname] = useState('');
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [repeatPassword, setRepeatPassword] = useState('');
 
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const user = await signUp(username, email, password);
+      const user = await signUp(fullname, username, email, password);
       if (!user.errors) {
         setAuthenticated(true);
       }
+    } else {
+      setErrors(['Password: The password did not match']);
     }
   };
 
   const updateUsername = (e) => {
     setUsername(e.target.value);
+  };
+
+  const updateFullname = (e) => {
+    setFullname(e.target.value);
   };
 
   const updateEmail = (e) => {
@@ -35,11 +43,20 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
   };
 
   if (authenticated) {
-    return <Redirect to="/" />;
+    return <Redirect to="/home" />;
   }
 
   return (
     <form onSubmit={onSignUp}>
+      <div>
+        <label>Full Name</label>
+        <input
+          type="text"
+          name="fullname"
+          onChange={updateFullname}
+          value={fullname}
+        ></input>
+      </div>
       <div>
         <label>User Name</label>
         <input
