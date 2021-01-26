@@ -20,7 +20,7 @@ def newTransaction():
     data = request.get_json()
     transaction = Transaction(
         user_id=current_user.get_id(),
-        commodity_symbol=data['symbol'],
+        commodity_id=data['id'],
         amount=data['amount'],
         price=data['price'],
     )

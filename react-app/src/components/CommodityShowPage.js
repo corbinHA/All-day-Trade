@@ -46,7 +46,7 @@ const CommodityShowPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     transaction.createTransaction({
-      symbol,
+      id: latestCommodityItem.commodity_id,
       amount,
       price: latestCommodityItem.last_price,
     });

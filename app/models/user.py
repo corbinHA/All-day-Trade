@@ -14,8 +14,6 @@ class User(db.Model, UserMixin):
     balance = db.Column(db.Numeric(10, 2), nullable=False)
 
     transactions = db.relationship("Transaction")
-    # watchlist = db.relationship(
-    #     "Watchlist", uselist=False, back_populates="users")
     watchlist = db.relationship(
         "Watchlist", uselist=False)
 

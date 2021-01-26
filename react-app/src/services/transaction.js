@@ -1,4 +1,4 @@
-export const createTransaction = async ({ symbol, amount, price }) => {
+export const createTransaction = async ({ id, amount, price }) => {
   //   console.log({ symbol, amount, price });
   const response = await fetch(`/api/transaction`, {
     method: 'POST',
@@ -6,7 +6,7 @@ export const createTransaction = async ({ symbol, amount, price }) => {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      symbol,
+      id,
       amount,
       price,
     }),

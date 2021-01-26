@@ -42,10 +42,11 @@ export default function Home() {
     <>
       <HomeContainer>
         <CommodityList>
-          {commodities.length ?
-            (commodities.map((commodity, idx) => (
-              <CommodityCard key={idx} commodity={commodity} />
-            ))) : ''}
+          {commodities.length
+            ? commodities.map((commodity, idx) => (
+                <CommodityCard key={idx} commodity={commodity} />
+              ))
+            : ''}
         </CommodityList>
       </HomeContainer>
     </>
