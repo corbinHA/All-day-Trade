@@ -49,7 +49,7 @@ const Img = styled.div`
   background-image: url(${Logo});
   width: 50%;
   height: 90%;
-  background-position: cover;
+  background-size: cover;
   position: absolute;
   margin: 0 auto;
 `;

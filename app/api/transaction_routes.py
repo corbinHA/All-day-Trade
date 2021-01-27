@@ -24,9 +24,16 @@ def newTransaction():
         amount=data['amount'],
         price=data['price'],
     )
+    user = User.query.get(transaction.user_id)
+    error = ""
+    if user.balance < transaction.amount * transaction.price:
+        error = "insufficient balance to buy this commodity"
+    if error:
+        return {"error": error}, 400
+    user.balance -= transaction.amount * transaction.price
     db.session.add(transaction)
     db.session.commit()
-    return {"result": "yay"}
+    return transaction.to_dict()
 
     # form = TransactionForm()
     # form['csrf_token'].data = request.cookies['csrf_token']
@@ -52,37 +59,30 @@ def newTransaction():
     # return jsonify(form.errors)
 
 
-# @transaction_routes.route('/sell', methods=["POST"])
-# def sellTransaction(id):
-#     data = request.get_json()
-#     user_id = current_user.get_id()
-#     amount = data['amount']
-#     price = data['price']
-#     commodity_id = data["commodityId"]
-
-#     old_transaction = Transaction.query.get(id)
-#     error = ""
-#     if !old_transaction:
-#         error = "Could not find transactions"
-#     elif transaction.amount <= 0:
-#         error = "Must own at least one share to sell"
-#     elif amount > transaction.amount:
-#         error = "Can not sell more shares than you own!"
-#     if error:
-#         return {"error": error}, 400
-#     transaction = Transaction(
-#         user_id=user_id,
-#         commodity_id=commodity_id,
-#         amount=amount,
-#         price=price,
-#     )
-#     user = User.query.get(transaction.user_id)
-#     user.balance += transaction.amount * transaction.price
-#     db.session.add(transaction)
-#     db.session.commit()
-#     return transaction.to_dict()
-#     print(form.errors)
-#     return jsonify(form.errors)
+@transaction_routes.route('/:id', methods=["POST"])
+def sellTransaction(id):
+    data = request.get_json()
+    transaction = Transaction(
+        user_id=current_user.get_id(),
+        amount=data['amount'],
+        price=data['price'],
+        commodity_id=data["commodityId"],
+    )
+    old_transaction = Transaction.query.get(id)
+    error = ""
+    if not old_transaction:
+        error = "Could not find transactions"
+    elif transaction.amount <= 0:
+        error = "Must own at least one share to sell"
+    elif amount > transaction.amount:
+        error = "Can not sell more shares than you own!"
+    if error:
+        return {"error": error}, 400
+    user = User.query.get(transaction.user_id)
+    user.balance += transaction.amount * transaction.price
+    db.session.add(transaction)
+    db.session.commit()
+    return transaction.to_dict()
 
     # send the transaction id back, and selling amount
     # query database for that transaction
