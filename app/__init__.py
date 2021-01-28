@@ -15,7 +15,7 @@ from .seeds import seed_commands
 
 from .config import Config
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path="../react-app/build/static")
 
 # Setup login manager
 login = LoginManager(app)
@@ -58,6 +58,6 @@ def inject_csrf_token(response):
 @app.route('/<path:path>')
 def react_root(path):
     print("path", path)
-    if path == 'favicon.ico':
-        return app.send_static_file('favicon.ico')
-    return app.send_static_file('index.html')
+    if path == 'favicon-32x32.png':
+        return app.send_from_directory('../react-app/build/', "favicon-32x32.png")
+    return app.send_from_directory('../react-app/build/', 'index.html')
