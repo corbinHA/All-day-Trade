@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, request, session
+from flask import Flask, render_template, request, session, send_from_directory
 from flask_cors import CORS
 from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect, generate_csrf
@@ -59,5 +59,5 @@ def inject_csrf_token(response):
 def react_root(path):
     print("path", path)
     if path == 'favicon-32x32.png':
-        return app.send_from_directory('../react-app/build/', "favicon-32x32.png")
-    return app.send_from_directory('../react-app/build/', 'index.html')
+        return send_from_directory('../react-app/build/', "favicon-32x32.png")
+    return send_from_directory('../react-app/build/', 'index.html')
