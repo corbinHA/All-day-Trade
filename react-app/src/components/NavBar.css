@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap%27');
+
+.navbar-wrapper {
+  background: transparent !important;
+  display: flex !important;
+  justify-content: space-around !important;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.li-wrapper {
+  display: flex;
+  justify-content: space-around !important;
+  width: 200px;
+  list-style: none;
+}
+
+.general-button-green {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  color: white;
+  background-color: #1fbea9 !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  border: none !important;
+  border-radius: 10px;
+  padding: 5px 10px;
+  width: 90px;
+  height: 40px;
+  margin-top: 10px !important;
+  margin-right: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.general-button-green:hover {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  color: white;
+  background-color: #25dfc6 !important;
+}
+
+.general-button-white {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  color: white;
+  background-color: #1f2226 !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  border: none !important;
+  border-radius: 10px;
+  padding: 5px 10px;
+  width: 90px;
+  height: 40px;
+  margin-top: 10px !important;
+  margin-right: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.general-button-white:hover {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  color: white;
+  background-color: #2a2e33 !important;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+.logo-text {
+  color: white;
+  font-weight: 800;
+  font-family: 'Open Sans', sans-serif;
+}

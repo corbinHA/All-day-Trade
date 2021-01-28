@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../services/auth';
+import './Forms.css';
+import signup from '../../images/signup.png';
 
 const SignUpForm = ({ authenticated, setAuthenticated }) => {
   const [errors, setErrors] = useState([]);
@@ -47,55 +49,76 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
   }
 
   return (
-    <form onSubmit={onSignUp}>
-      <div>
-        <label>Full Name</label>
-        <input
-          type="text"
-          name="fullname"
-          onChange={updateFullname}
-          value={fullname}
-        ></input>
+    <div className="sign-up-container">
+      <div className="sign-up-wrapper animate__animated animate__fadeIn">
+        <div className="text-wrapper">
+          <span className="form-title">Duke & Duke</span>
+          <span className="form-sub-title">Sign Up</span>
+        </div>
+        <div className="form-div">
+          <form onSubmit={onSignUp}>
+            <div className="label-wrapper">
+              <label className="label">Full Name</label>
+              <input
+                className="input"
+                type="text"
+                name="fullname"
+                onChange={updateFullname}
+                value={fullname}
+              ></input>
+            </div>
+            <div className="label-wrapper">
+              <label className="label">User Name</label>
+              <input
+                className="input"
+                type="text"
+                name="username"
+                onChange={updateUsername}
+                value={username}
+              ></input>
+            </div>
+            <div className="label-wrapper">
+              <label className="label">Email</label>
+              <input
+                className="input"
+                type="text"
+                name="email"
+                onChange={updateEmail}
+                value={email}
+              ></input>
+            </div>
+            <div className="label-wrapper">
+              <label className="label">Password</label>
+              <input
+                className="input"
+                type="password"
+                name="password"
+                onChange={updatePassword}
+                value={password}
+              ></input>
+            </div>
+            <div className="label-wrapper">
+              <label className="label">Repeat Password</label>
+              <input
+                className="input"
+                type="password"
+                name="repeat_password"
+                onChange={updateRepeatPassword}
+                value={repeatPassword}
+                required={true}
+              ></input>
+            </div>
+            <button className="general-button-green" type="submit">
+              Sign Up
+            </button>
+          </form>
+        </div>
       </div>
-      <div>
-        <label>User Name</label>
-        <input
-          type="text"
-          name="username"
-          onChange={updateUsername}
-          value={username}
-        ></input>
-      </div>
-      <div>
-        <label>Email</label>
-        <input
-          type="text"
-          name="email"
-          onChange={updateEmail}
-          value={email}
-        ></input>
-      </div>
-      <div>
-        <label>Password</label>
-        <input
-          type="password"
-          name="password"
-          onChange={updatePassword}
-          value={password}
-        ></input>
-      </div>
-      <div>
-        <label>Repeat Password</label>
-        <input
-          type="password"
-          name="repeat_password"
-          onChange={updateRepeatPassword}
-          value={repeatPassword}
-          required={true}
-        ></input>
-      </div>
-      <button type="submit">Sign Up</button>
-    </form>
+      <img
+        src={signup}
+        className="form-image animate__animated animate__fadeIn"
+      />
+    </div>
   );
 };
 

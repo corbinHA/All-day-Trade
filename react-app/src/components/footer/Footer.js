@@ -7,7 +7,7 @@ import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles({
   footer: {
-    height: '6vh',
+    height: '20px',
     width: '100%',
     display: 'flex',
     flexDirection: 'row',
@@ -16,6 +16,8 @@ const useStyles = makeStyles({
     fontWeight: 'bold',
     fontSize: '1.8rem',
     marginTop: '1rem',
+    paddingBottom: '40px',
+    background: '#202225',
   },
   text: {
     color: 'lightgray',
@@ -23,8 +25,9 @@ const useStyles = makeStyles({
     margin: '0 15px 0 15px',
   },
   icons: {
-    // color: 'lightgray',
+    color: 'white',
     margin: '7px 10px 0 10px',
+    marginBottom: '10px',
   },
   mainContainer: {
     display: 'grid',
@@ -35,11 +38,14 @@ const useStyles = makeStyles({
         "contributor . ."
         "contributor . ."`,
     justifyContent: 'space-evenly',
-    borderTop: '1px solid #c9cccb',
+    // borderTop: '1px solid #c9cccb',
     paddingTop: '14px',
     position: 'sticky',
     bottom: 0,
-    background: 'rgb(104, 104, 104)',
+    background: '#202225',
+    // boxShadow: 'rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px',
+    color: 'white',
+    paddingBottom: '10px',
   },
 });
 

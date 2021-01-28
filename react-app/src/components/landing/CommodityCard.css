@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap%27');
+
+.commodity-wrapper {
+  height: calc(100vh - 21.5vh);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  align-content: center;
+}
+.home-content-wrapper {
+  width: 61.5%;
+}
+
+.card {
+  height: 150px;
+  background-color: #7289da;
+  width: 250px;
+  margin-top: 20px;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.card:hover {
+  background-color: #869ffa;
+}
+
+.commodity-name {
+  font-family: 'Open Sans', sans-serif;
+  color: white;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.commodity-symbol {
+  font-family: 'Open Sans', sans-serif;
+  color: white;
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.commodity-icon {
+  height: 12px;
+}
+
+.chart-page-wrapper {
+  padding: 40px;
+  background-color: #202225;
+  margin-bottom: 40px;
+  margin-top: 40px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.chart-wrapper {
+  background-color: #202225;
+  border-radius: 5px;
+  padding: 40px;
+  margin-bottom: 20px;
+}
+
+.input::-webkit-outer-spin-button,
+.input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+.commodity-price {
+  font-size: 20px;
+  font-weight: 800;
+}

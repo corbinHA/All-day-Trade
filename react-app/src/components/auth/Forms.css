@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap%27');
+
+.sign-up-container {
+  height: calc(100vh - 21.5vh);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+.sign-up-wrapper {
+  background-color: #202225;
+  padding: 40px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  z-index: 1;
+  margin-right: 730px;
+}
+
+.form-title {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 50px;
+  color: white;
+  font-weight: 800;
+  text-align: center;
+}
+
+.form-sub-title {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 30px;
+  color: white;
+  font-weight: 300;
+  text-align: center;
+}
+
+.text-wrapper {
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 50px;
+}
+
+.form-div {
+}
+
+.label {
+  color: white;
+  margin-bottom: 10px;
+}
+.label-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  font-family: 'Open Sans', sans-serif;
+  margin-bottom: 10px;
+  border-bottom: 3px solid #1fbea9;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  background-color: #202225 !important;
+  color: white;
+  font-weight: 800;
+}
+
+.input:focus {
+  border-bottom: 3px solid #257ae9;
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 800;
+}
+
+.input:active {
+  border-bottom: 3px solid #25e9cf;
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 800;
+}
+
+.form-image {
+  bottom: 11%;
+  right: -10%;
+  height: auto;
+  width: 1400px;
+  z-index: 0;
+  position: absolute;
+}
+
+.login-container {
+  height: calc(100vh - 21.5vh);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+.button-wrapper {
+  display: flex;
+  width: 100%;
+}
+
+.cta {
+  font-family: 'Open Sans', sans-serif;
+  color: white;
+  font-size: 10px;
+}
+.cta:hover {
+  color: #257ae9;
+}
+
+.cta-wrapper {
+  margin-top: 20px;
+}
+
+.cta-1 {
+  font-family: 'Open Sans', sans-serif;
+  color: white;
+  font-size: 10px;
+}
+
+.input-email,
+.input-password {
+  font-family: 'Open Sans', sans-serif;
+  margin-bottom: 10px;
+  border-bottom: 3px solid #1fbea9;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  background-color: #202225 !important;
+  color: white;
+  font-weight: 800;
+}
+
+.input-email:focus,
+.input-password:focus {
+  border-bottom: 3px solid #257ae9;
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 800;
+}
+
+.input-email:active,
+.input-password:active {
+  border-bottom: 3px solid #25e9cf;
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 800;
+}

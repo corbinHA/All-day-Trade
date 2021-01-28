@@ -1,4 +1,4 @@
-.footer-grid__main-container {
+/* .footer-grid__main-container {
   display: grid;
   grid-template-areas:
     'contributor product community'
@@ -12,7 +12,8 @@
   position: sticky;
   bottom: 0;
   background: rgb(104, 104, 104);
-}
+  z-index: 5;
+} */
 
 .footer-disclaimer {
   display: grid;
@@ -40,7 +41,7 @@
 .product-link,
 .support-link {
   text-decoration: none;
-  color: #282828;
+  color: white;
   padding-top: 8px;
   font-weight: 400;
   font-size: 14px;
@@ -52,6 +53,7 @@
   /* margin: 18px auto; */
   font-size: 14px;
   opacity: 0.8;
+  background-color: #202225 !important;
 }
 
 .fa-github-square {

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Redirect, NavLink, useHistory } from 'react-router-dom';
 import { login } from '../../services/auth';
+import loginPic from '../../images/loginPic.png';
 
 const LoginForm = ({ authenticated, setAuthenticated, setCurrentUser }) => {
   const [errors, setErrors] = useState([]);
@@ -20,8 +21,8 @@ const LoginForm = ({ authenticated, setAuthenticated, setCurrentUser }) => {
 
   const logInDemo = async (e) => {
     e.preventDefault();
-    const emailField = document.querySelector('.email');
-    const passwordField = document.querySelector('.password');
+    const emailField = document.querySelector('.input-email');
+    const passwordField = document.querySelector('.input-password');
     if (email || password) {
       setEmail('');
       setPassword('');
@@ -53,56 +54,59 @@ const LoginForm = ({ authenticated, setAuthenticated, setCurrentUser }) => {
 
   return (
     <>
-      <div className="login-page__main-container">
-        <div className="login-form__main-container">
-          <form className="login-form__form-container" onSubmit={onLogin}>
-            {errors.length ? (
-              <div className="errors__main-container">
-                <strong>We encountered the following errors:</strong>
-                {errors.map((error, idx) => (
-                  <div key={idx} className="error-message">
-                    {error}
-                  </div>
-                ))}
+      <div className="sign-up-container">
+        <div className="sign-up-wrapper">
+          <div className="text-wrapper">
+            <span className="form-title">Duke & Duke</span>
+            <span className="form-sub-title">Login</span>
+          </div>
+          <div className="form-div">
+            <form onSubmit={onLogin}>
+              <div className="label-wrapper">
+                <label className="label">Email</label>
+                <input
+                  name="email"
+                  type="email"
+                  className="input-email"
+                  value={email}
+                  onChange={updateEmail}
+                />
               </div>
-            ) : (
-              <span></span>
-            )}
-            <div className="login-form__title">Log In</div>
-            <input
-              name="email"
-              type="email"
-              className="login-form__input-field email"
-              placeholder="Email"
-              value={email}
-              onChange={updateEmail}
-            />
-            <input
-              name="password"
-              type="password"
-              placeholder="Password"
-              className="login-form__input-field password"
-              value={password}
-              onChange={updatePassword}
-            />
-            <button className="login-form__submit-button" type="submit">
-              Log in
-            </button>
-            <button
-              className="login-form__submit-button demo-button"
-              type="submit"
-              onClick={logInDemo}
-            >
-              Log in as Demo User
-            </button>
-          </form>
-          <div className="signup-link__main-container">
-            <div className="signup-link__message">New to Duke & Duke?</div>
-            <NavLink className="signup-link__link" to="/signup" exact={true}>
+              <div className="label-wrapper">
+                <label className="label">Password</label>
+                <input
+                  className="input-password"
+                  name="password"
+                  type="password"
+                  value={password}
+                  onChange={updatePassword}
+                />
+              </div>
+              <div className="button-wrapper">
+                <button className="general-button-green" type="submit">
+                  Log in
+                </button>
+                <button
+                  className="general-button-green"
+                  type="submit"
+                  onClick={logInDemo}
+                >
+                  Demo Account
+                </button>
+              </div>
+            </form>
+          </div>
+          <div className="cta-wrapper">
+            <span className="cta-1">New to Duke & Duke? </span>
+            <a href="/signup" className="cta">
               Sign Up
-            </NavLink>
+            </a>
           </div>
         </div>
+        <img
+          src={loginPic}
+          className="form-image animate__animated animate__fadeIn"
+        />
       </div>
     </>
   );

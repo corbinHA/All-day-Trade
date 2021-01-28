@@ -1,20 +1,29 @@
+@import 'Footer.css';
+@import 'CommodityList.css';
 
-@import "Footer.css";
-@import "CommodityList.css";
+#Root {
+  height: 100vh;
+  width: 100vw;
+}
 
 html {
-    font-family: "Maison Neue Book", "Helvetica Neue", Helvetica, Arial,
-        "Liberation Sans", FreeSans, sans-serif;
-    font-size: 62.5%;
-    font-weight: 400;
-    line-height: 1;
+  font-family: 'Maison Neue Book', 'Helvetica Neue', Helvetica, Arial,
+    'Liberation Sans', FreeSans, sans-serif;
+  font-size: 62.5%;
+  font-weight: 400;
+  line-height: 1;
+  height: 100vh;
+  overflow: hidden;
+  width: 100vw;
 }
 
 body {
-    margin: 0;
-    font-size: 1.4rem;
-    line-height: 1.5;
-    color: #282828;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  background: #36393f;
+  height: 100vh;
+  margin: 0;
+  font-size: 1.4rem;
+  line-height: 1.5;
+  color: #282828;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }

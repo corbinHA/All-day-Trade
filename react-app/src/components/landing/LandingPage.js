@@ -1,62 +1,31 @@
 import React from 'react';
 import SignupButton from './SignupButton';
-import styled from 'styled-components';
-import Logo from '../../images/LOGO.jpg';
+import './Landingpage.css';
+import { Container, Row, Col } from 'react-bootstrap';
+import LPL from '../../images/LPL.png';
 
 function LandingPage() {
   return (
-    <MainContainer>
-      <PageContainer>
-        <ImageContainer>
-          <Img />
-        </ImageContainer>
-        <InfoContainer>
-          <h1 className="landing-page_intro header">
-            Investing for the People, by the People
-          </h1>
-          <Header>
+    <Container className="home-wrapper">
+      <Row className="home-content-wrapper">
+        <Col className="left-side animate__animated animate__fadeIn">
+          <h1 className="heading">Investing for the People, by the People</h1>
+          <h2 className="sub-heading">
             This is just a demo for a showing of a commodity trading App
-          </Header>
-          <SignupButton />
-        </InfoContainer>
-      </PageContainer>
-    </MainContainer>
+          </h2>
+          <div className="margin">
+            <SignupButton />
+          </div>
+        </Col>
+        <Col className="right-side">
+          <img
+            src={LPL}
+            className="home-image animate__animated animate__fadeIn"
+          />
+        </Col>
+      </Row>
+    </Container>
   );
 }
 
 export default LandingPage;
-
-const PageContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  height: 100vh;
-`;
-const ImageContainer = styled.div`
-  width: 70%;
-  height: 100%;
-  ${'' /* z-index: -10; */}
-  padding: 10px;
-`;
-
-const InfoContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-`;
-
-const Img = styled.div`
-  background-image: url(${Logo});
-  width: 50%;
-  height: 90%;
-  background-size: cover;
-  position: absolute;
-  margin: 0 auto;
-`;
-
-const Header = styled.h2``;
-
-const MainContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-`;

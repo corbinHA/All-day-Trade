@@ -53,19 +53,32 @@ const CommodityShowPage = () => {
   };
 
   return (
-    <div>
-      <XYPlot height={500} width={500}>
-        <WhiskerSeries data={dataPoints} />
-      </XYPlot>
-      <div>{latestCommodityItem.name}</div>
-      <div>${latestCommodityItem.last_price}</div>
-      <form onSubmit={handleSubmit}>
-        <div>
-          qty
-          <input type="number" value={amount} onChange={handleChange} />
+    <div className="commodity-wrapper">
+      <div className="home-content-wrapper">
+        <div className="chart-page-wrapper">
+          <div className="chart-wrapper">
+            <XYPlot height={300} width={500} color={'#7289da'}>
+              <WhiskerSeries data={dataPoints} />
+            </XYPlot>
+          </div>
+          <div>{commodityItems.name}</div>
+          <div className="label commodity-price">
+            ${latestCommodityItem.last_price}
+          </div>
+          <form onSubmit={handleSubmit}>
+            <div className="label-wrapper">
+              <label className="label">qty</label>
+              <input
+                className="input"
+                type="number"
+                value={amount}
+                onChange={handleChange}
+              />
+            </div>
+            <button className="general-button-green">Buy</button>
+          </form>
         </div>
-        <button>Buy</button>
-      </form>
+      </div>
     </div>
   );
 };
