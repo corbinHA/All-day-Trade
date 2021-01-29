@@ -1,17 +1,18 @@
-import React, { useState, useEffect } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import LoginForm from "./components/auth/LoginForm";
-import SignUpForm from "./components/auth/SignUpForm";
-import NavBar from "./components/NavBar";
-import ProtectedRoute from "./components/auth/ProtectedRoute";
-import UsersList from "./components/UsersList";
-import User from "./components/User";
-import LandingPage from "./components/landing/LandingPage";
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import LoginForm from './components/auth/LoginForm';
+import SignUpForm from './components/auth/SignUpForm';
+import NavBar from './components/NavBar';
+import ProtectedRoute from './components/auth/ProtectedRoute';
+import UsersList from './components/UsersList';
+import User from './components/User';
+import LandingPage from './components/landing/LandingPage';
+import Portfolio from './components/Portfolio';
 
-import Home from './components/landing/Home'
-import { authenticate } from "./services/auth";
-import Footer from "./components/footer/Footer";
-import CommodityShowPage from "./components/CommodityShowPage";
+import Home from './components/landing/Home';
+import { authenticate } from './services/auth';
+import Footer from './components/footer/Footer';
+import CommodityShowPage from './components/CommodityShowPage';
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -34,6 +35,7 @@ function App() {
       <NavBar
         authenticated={authenticated}
         setAuthenticated={setAuthenticated}
+        currentUser={currentUser}
       />
       <Switch>
         <Route path="/" exact={true}>
@@ -53,29 +55,27 @@ function App() {
           />
         </Route>
         <ProtectedRoute
-          path="/users"
+          path="/portfolio/:id"
           exact={true}
           authenticated={authenticated}
+          currentUser={currentUser}
         >
-          <UsersList />
-        </ProtectedRoute>
-        <ProtectedRoute
-          path="/users/:userId"
-          exact={true}
-          authenticated={authenticated}
-        >
-          <User />
+          <Portfolio />
         </ProtectedRoute>
         <ProtectedRoute path="/home" exact={true} authenticated={authenticated}>
           <Home />
         </ProtectedRoute>
-        <ProtectedRoute path="/commodity/:symbol" exact={true} authenticated={authenticated}>
+        <ProtectedRoute
+          path="/commodity/:symbol"
+          exact={true}
+          authenticated={authenticated}
+        >
           <CommodityShowPage />
         </ProtectedRoute>
       </Switch>
       <Footer />
     </BrowserRouter>
   );
-};
+}
 
 export default App;

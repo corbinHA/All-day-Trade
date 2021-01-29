@@ -12,7 +12,6 @@ export default function CommodityCard({ commodity }) {
           <h1 className="commodity-name">
             {commodity.name} <img src={Ingot} className="commodity-icon" />
           </h1>
-
           <div className="">
             <p className="commodity-symbol">{commodity.symbol}</p>
             <div>${commodity.price_points[0].last_price}</div>

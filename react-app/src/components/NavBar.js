@@ -7,7 +7,7 @@ import SignupButton from './landing/SignupButton';
 import styled from 'styled-components';
 import './NavBar.css';
 
-const NavBar = ({ setAuthenticated, authenticated }) => {
+const NavBar = ({ setAuthenticated, authenticated, currentUser }) => {
   if (authenticated) {
     return (
       <Row className="navbar-wrapper w-100">
@@ -23,11 +23,15 @@ const NavBar = ({ setAuthenticated, authenticated }) => {
                 <button className="general-button-green">Home</button>
               </NavLink>
             </li>
-            <li>
-              <NavLink to="/portfolio" exact={true} activeClassName="active">
+            {/* <li>
+              <NavLink
+                to={`/portfolio/${currentUser.id}`}
+                exact={true}
+                activeClassName="active"
+              >
                 <button className="general-button-green">Portfolio</button>
               </NavLink>
-            </li>
+            </li> */}
             <li>
               <LogoutButton setAuthenticated={setAuthenticated} />
             </li>

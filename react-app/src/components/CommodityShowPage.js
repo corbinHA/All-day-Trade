@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { commodity, transaction } from '../services';
-import { XYPlot, WhiskerSeries } from 'react-vis';
+import {
+  XYPlot,
+  WhiskerSeries,
+  HorizontalGridLines,
+  VerticalGridLines,
+  XAxis,
+  YAxis,
+} from 'react-vis';
 import { createTransaction } from '../services/transaction';
 
 const makeDataPoint = (item) => {
@@ -16,6 +23,7 @@ const CommodityShowPage = () => {
   const [commodityItems, setCommodityItems] = useState(null);
   const [amount, setAmount] = useState(1);
   const { symbol } = useParams();
+  const history = useHistory();
 
   const fetchCommodity = async () => {
     const fetchCommodity = await commodity.getCommodity({ symbol });
@@ -50,6 +58,7 @@ const CommodityShowPage = () => {
       amount,
       price: latestCommodityItem.last_price,
     });
+    history.push('/home');
   };
 
   return (
@@ -58,10 +67,14 @@ const CommodityShowPage = () => {
         <div className="chart-page-wrapper">
           <div className="chart-wrapper">
             <XYPlot height={300} width={500} color={'#7289da'}>
+              {/* <XAxis tickValues />
+              <YAxis />
+              <VerticalGridLines />
+              <HorizontalGridLines /> */}
               <WhiskerSeries data={dataPoints} />
             </XYPlot>
           </div>
-          <div>{commodityItems.name}</div>
+          <div>{latestCommodityItem.name}</div>
           <div className="label commodity-price">
             ${latestCommodityItem.last_price}
           </div>
