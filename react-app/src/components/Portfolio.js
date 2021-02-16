@@ -14,14 +14,14 @@ export default function Portfolio() {
 
   useEffect(() => {
     fetchTransaction();
-  });
+  }, []);
 
   return (
     <div className="commodity-wrapper">
       <div className="home-content-wrapper">
         <div>
-          {/* {!userTransactions
-            ? userTransactions.map((transaction, idx) => {
+          {userTransactions
+            ? userTransactions.transactions.map((transaction, idx) => (
                 <div key={idx}>
                   <h1 className="commodity-name">
                     {transaction.commodity.name}
@@ -42,11 +42,10 @@ export default function Portfolio() {
                       </p>
                     </div>
                   </div>
-                </div>;
-              })
-            : ''} */}
+                </div>
+              ))
+            : ''}
         </div>
-        <h1>HI</h1>
       </div>
     </div>
   );

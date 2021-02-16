@@ -26,6 +26,6 @@ class Transaction(db.Model):
             "price": float(self.price),
             "buy/sell": self.buy_sell,
             "created_at": self.created_at,
-            "commodity": self.commodities.to_dict(),
+            "commodity": self.commodity.to_dict(),
             "user": self.user.to_dict()
         }

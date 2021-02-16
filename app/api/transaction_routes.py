@@ -6,9 +6,10 @@ from flask_login import current_user
 transaction_routes = Blueprint('transaction', __name__)
 
 
-@transaction_routes.route('/:id')
+@transaction_routes.route('/<int:id>')
 def getUserTransactions(id):
-    transactions = Transactions.query.filter_by(id=user_id).all()
+    transactions = Transaction.query.filter_by(user_id=id).all()
+    print(transactions)
     if transactions:
         data = [transaction.to_dict() for transaction in transactions]
         return {"transactions": data}

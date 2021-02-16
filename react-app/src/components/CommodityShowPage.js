@@ -21,12 +21,14 @@ const makeDataPoint = (item) => {
 
 const CommodityShowPage = () => {
   const [commodityItems, setCommodityItems] = useState(null);
+  const [commodityInfo, setCommodityInfo] = useState(null);
   const [amount, setAmount] = useState(1);
   const { symbol } = useParams();
   const history = useHistory();
 
   const fetchCommodity = async () => {
     const fetchCommodity = await commodity.getCommodity({ symbol });
+    setCommodityInfo(fetchCommodity);
     const sorted = fetchCommodity.price_points.sort(
       (a, b) => Date.parse(a.price_date) - Date.parse(b.price_date)
     );
@@ -74,13 +76,12 @@ const CommodityShowPage = () => {
               <WhiskerSeries data={dataPoints} />
             </XYPlot>
           </div>
-          <div>{latestCommodityItem.name}</div>
           <div className="label commodity-price">
             ${latestCommodityItem.last_price}
           </div>
           <form onSubmit={handleSubmit}>
             <div className="label-wrapper">
-              <label className="label">qty</label>
+              <label className="label">quantity</label>
               <input
                 className="input"
                 type="number"
@@ -91,6 +92,9 @@ const CommodityShowPage = () => {
             <button className="general-button-green">Buy</button>
           </form>
         </div>
+      </div>
+      <div className="commodity-content-wrapper">
+        <div className="label commodity-info-name">{commodityInfo.name}</div>
       </div>
     </div>
   );
