@@ -23,7 +23,7 @@ const NavBar = ({ setAuthenticated, authenticated, currentUser }) => {
                 <button className="general-button-green">Home</button>
               </NavLink>
             </li>
-            <li>
+            {/* <li>
               <NavLink
                 to={`/portfolio/${currentUser.id}`}
                 exact={true}
@@ -31,7 +31,7 @@ const NavBar = ({ setAuthenticated, authenticated, currentUser }) => {
               >
                 <button className="general-button-green">Portfolio</button>
               </NavLink>
-            </li>
+            </li> */}
             <li>
               <LogoutButton setAuthenticated={setAuthenticated} />
             </li>
