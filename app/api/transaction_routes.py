@@ -36,28 +36,6 @@ def newTransaction():
     db.session.commit()
     return transaction.to_dict()
 
-    # form = TransactionForm()
-    # form['csrf_token'].data = request.cookies['csrf_token']
-
-    # if form.validate_on_submit():
-    # transaction = Transaction(
-    #     user_id=current_user.get_id(),
-    #     commodity_id=form.data['commodityId'],
-    #     amount=form.data['amount'],
-    #     price=form.data['price'],
-    #     )
-    #     user = User.query.get(transaction.user_id)
-    #     error = ""
-    #     if user.balance < transaction.amount * transaction.price:
-    #         error = "insufficient balance to buy this commodity"
-    #     if error:
-    #         return {"error": error}, 400
-    #     user.balance -= transaction.amount * transaction.price
-    #     db.session.add(transaction)
-    #     db.session.commit()
-    #     return transaction.to_dict()
-    # print(form.errors)
-    # return jsonify(form.errors)
 
 
 @transaction_routes.route('/:id', methods=["POST"])
@@ -85,9 +63,4 @@ def sellTransaction(id):
     db.session.commit()
     return transaction.to_dict()
 
-    # send the transaction id back, and selling amount
-    # query database for that transaction
-    # create new transation
-    # change amount to negative
-    # change price negative of current value
-    #  on the user balance add the price sold at time the amount
+   
