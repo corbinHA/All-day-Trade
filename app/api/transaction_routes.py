@@ -61,6 +61,6 @@ def sellTransaction(id):
     user.balance += transaction.amount * transaction.price
     db.session.add(transaction)
     db.session.commit()
-    return transaction.to_dict()
+    
 
    
