@@ -31,14 +31,14 @@ def newTransaction():
         error = "insufficient balance to buy this commodity"
     if error:
         return {"error": error}, 400
-    user.balance -= transaction.amount * transaction.price
+    user.balance = float(user.balance) - float(transaction.amount) * float(transaction.price)
     db.session.add(transaction)
     db.session.commit()
     return transaction.to_dict()
 
 
 
-@transaction_routes.route('/:id', methods=["POST"])
+@transaction_routes.route('/<int:id>', methods=["POST"])
 def sellTransaction(id):
     data = request.get_json()
     transaction = Transaction(
@@ -51,14 +51,11 @@ def sellTransaction(id):
     error = ""
     if not old_transaction:
         error = "Could not find transactions"
-    elif transaction.amount <= 0:
-        error = "Must own at least one share to sell"
-    elif amount > transaction.amount:
-        error = "Can not sell more shares than you own!"
+
     if error:
         return {"error": error}, 400
     user = User.query.get(transaction.user_id)
-    user.balance += transaction.amount * transaction.price
+    user.balance = float(user.balance) + float(transaction.amount) * float(transaction.price)
     db.session.add(transaction)
     db.session.commit()
     
