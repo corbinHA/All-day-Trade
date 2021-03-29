@@ -21,3 +21,16 @@ export const getTransactions = async ({ id }) => {
   });
   return await response.json();
 };
+
+export const sellTransaction = async ({ id }) => {
+  const response = await fetch(`/api/transaction/${id}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      id,
+    }),
+  });
+  return await response.json();
+};

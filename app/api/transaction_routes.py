@@ -41,6 +41,7 @@ def newTransaction():
 @transaction_routes.route('/<int:id>', methods=["POST"])
 def sellTransaction(id):
     data = request.get_json()
+    user_id=current_user.get_id()
     transaction = Transaction(
         user_id=current_user.get_id(),
         amount=data['amount'],
@@ -54,9 +55,9 @@ def sellTransaction(id):
 
     if error:
         return {"error": error}, 400
-    user = User.query.get(transaction.user_id)
+    user = User.query.get(user_id)
     user.balance = float(user.balance) + float(transaction.amount) * float(transaction.price)
-    db.session.add(transaction)
+    db.session.remove(transaction)
     db.session.commit()
     
 
