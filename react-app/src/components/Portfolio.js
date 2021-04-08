@@ -4,12 +4,16 @@ import { transaction } from '../services';
 
 export default function Portfolio() {
   const [userTransactions, setUserTransactions] = useState(null);
+  const [show, setShow] = useState(true)
   const { id } = useParams();
 
   const fetchTransaction = async () => {
     const fetchTransactions = await transaction.getTransactions({ id });
     setUserTransactions(fetchTransactions);
-    console.log(userTransactions);
+  };
+
+  const handleSubmit = async () => {
+    await transaction.sellTransaction({ id });
   };
 
   useEffect(() => {
@@ -42,6 +46,9 @@ export default function Portfolio() {
                       </p>
                     </div>
                   </div>
+                  <button onClick={() => handleSubmit(), setShow(false)}>
+                    Sell
+                  </button>
                 </div>
               ))
             : ''}

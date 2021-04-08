@@ -10,6 +10,7 @@ from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .api.transaction_routes import transaction_routes
 from .api.commodity_routes import commodity_routes
+from .api.watchlist_routes import watchlist_routes
 
 from .seeds import seed_commands
 

@@ -41,7 +41,7 @@ def newTransaction():
 @transaction_routes.route('/<int:id>', methods=["POST"])
 def sellTransaction(id):
     data = request.get_json()
-    user_id=current_user.get_id()
+    user_id = current_user.get_id()
     transaction = Transaction(
         user_id=current_user.get_id(),
         amount=data['amount'],
@@ -60,5 +60,3 @@ def sellTransaction(id):
     db.session.remove(transaction)
     db.session.commit()
     
-
-   
