@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
-import { commodity, transaction } from '../services';
+import { commodity, transaction, user } from '../services';
 import {
   XYPlot,
   WhiskerSeries,
@@ -23,6 +23,7 @@ const CommodityShowPage = (props) => {
   const [ error, setError ] = useState(null);
   const [commodityItems, setCommodityItems] = useState(null);
   const [commodityInfo, setCommodityInfo] = useState(null);
+  const [ userCommodities, setUserCommodities] = useState(null);
   const [amount, setAmount] = useState(1);
   const { symbol } = useParams();
   const history = useHistory();
@@ -36,8 +37,14 @@ const CommodityShowPage = (props) => {
     setCommodityItems(sorted);
   };
 
+  const fetchUserCommodities = async () => {
+    const userCommodityInfo = user.getUserCommodities( props.currentUser.id )
+    setUserCommodities(userCommodityInfo)
+  }
+
   useEffect(() => {
     fetchCommodity();
+    fetchUserCommodities();
   }, []);
 
   if (commodityItems === null) return <h3>loading</h3>;
@@ -73,6 +80,16 @@ const CommodityShowPage = (props) => {
 
   const handleSell = async (e) => {
     e.preventDefault();
+    console.log(userCommodities)
+    // if (!userCommodities.hasOwnProperty(`${latestCommodityItem.name}`)) {
+    //   setError("You do not own any amount of this commodity!");
+    //   return;
+    // } 
+      if (userCommodities[latestCommodityItem.name] < amount) {
+        setError("Not enough commodity owned to sell");
+        return;
+      }
+
     await transaction.createTransaction({
       id: latestCommodityItem.commodity_id,
       amount,

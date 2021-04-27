@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import styled from 'styled-components';
 import './CommodityCard.css';
 import Ingot from '../../images/ingot.png';
 

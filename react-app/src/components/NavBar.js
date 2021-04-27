@@ -10,8 +10,6 @@ import './NavBar.css';
 const NavBar = ({ setAuthenticated, authenticated, currentUser }) => {
   if (authenticated) {
 
-    console.log(currentUser);
-
     return (
       <Row className="navbar-wrapper w-100">
         <Col>

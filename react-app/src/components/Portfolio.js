@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { transaction, user } from '../services';
+import { transaction } from '../services';
 
 export default function Portfolio() {
   const [userTransactions, setUserTransactions] = useState(null);

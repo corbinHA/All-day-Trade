@@ -26,18 +26,6 @@ def getUserCommodities(id):
             user_commodities[tx.commodity.name] -= tx.amount
     return user_commodities
 
-# user.transactions = [
-#     {commodity: 'gold', qty: 3, buy/sell: true},
-#     {commodity: 'cotton', qty: 1, buy/sell: true},
-#     {commodity: 'gold', qty: 2, buy/sell: true},
-#     {commodity: 'gold', qty: 1, buy/sell: false},
-# ]
-
-# {
-#     gold: 4,
-#     cotton: 1
-# }
-
 
 @user_routes.route('/<int:id>')
 @login_required
