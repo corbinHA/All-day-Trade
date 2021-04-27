@@ -38,19 +38,13 @@ def newTransaction():
 
 
 
-@transaction_routes.route('/<int:id>', methods=["POST"])
+@transaction_routes.route('/<id>', methods=["POST"])
 def sellTransaction(id):
     data = request.get_json()
     user_id = current_user.get_id()
-    transaction = Transaction(
-        user_id=current_user.get_id(),
-        amount=data['amount'],
-        price=data['price'],
-        commodity_id=data["commodityId"],
-    )
-    old_transaction = Transaction.query.get(id)
+    transaction = Transaction.query.get(id)
     error = ""
-    if not old_transaction:
+    if not transaction:
         error = "Could not find transactions"
 
     if error:
@@ -59,4 +53,5 @@ def sellTransaction(id):
     user.balance = float(user.balance) + float(transaction.amount) * float(transaction.price)
     db.session.remove(transaction)
     db.session.commit()
+    return "Yay"
     
