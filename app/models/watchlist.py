@@ -31,3 +31,11 @@ class Watchlist(db.Model):
             "created_at": self.created_at,
             "commodity": self.commodities.to_dict()
         }
+
+
+# POST user/id/watchlist body { commod_id: 3 }
+# user = User.get(id)
+# commodity = Commodity.get(commod_id)
+# wl = WatchList.create({ user=user })
+# wl.commodities.append(commodity)
+#    
