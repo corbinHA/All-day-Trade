@@ -19,7 +19,8 @@ const makeDataPoint = (item) => {
   return { x, y, yVariance, xVariance };
 };
 
-const CommodityShowPage = () => {
+const CommodityShowPage = (props) => {
+  const [ error, setError ] = useState(null);
   const [commodityItems, setCommodityItems] = useState(null);
   const [commodityInfo, setCommodityInfo] = useState(null);
   const [amount, setAmount] = useState(1);
@@ -53,13 +54,32 @@ const CommodityShowPage = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleBuy = async (e) => {
     e.preventDefault();
-    transaction.createTransaction({
+    if (parseFloat(props.currentUser.balance) < amount * latestCommodityItem.last_price) {
+      setError("Not Enough Funds!")
+      return;
+    }
+    
+    await transaction.createTransaction({
       id: latestCommodityItem.commodity_id,
       amount,
       price: latestCommodityItem.last_price,
+      buy_sell: true,
     });
+    await props.authenticateUser()
+    history.push('/home');
+  };
+
+  const handleSell = async (e) => {
+    e.preventDefault();
+    await transaction.createTransaction({
+      id: latestCommodityItem.commodity_id,
+      amount,
+      price: latestCommodityItem.last_price,
+      buy_sell: false,
+    });
+    await props.authenticateUser()
     history.push('/home');
   };
 
@@ -79,7 +99,7 @@ const CommodityShowPage = () => {
           <div className="label commodity-price">
             ${latestCommodityItem.last_price}
           </div>
-          <form onSubmit={handleSubmit}>
+          <form>
             <div className="label-wrapper">
               <label className="label">quantity</label>
               <input
@@ -89,7 +109,9 @@ const CommodityShowPage = () => {
                 onChange={handleChange}
               />
             </div>
-            <button className="general-button-green">Buy</button>
+            <button className="general-button-green" onClick={handleBuy}>Buy</button>
+            <button className="general-button-green" onClick={handleSell}>Sell</button>
+            <div>{error}</div>
           </form>
         </div>
       </div>

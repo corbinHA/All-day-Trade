@@ -4,8 +4,6 @@ import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
-import UsersList from './components/UsersList';
-import User from './components/User';
 import LandingPage from './components/landing/LandingPage';
 import Portfolio from './components/Portfolio';
 
@@ -19,15 +17,17 @@ function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [loaded, setLoaded] = useState(false);
 
+  const authenticateUser = async () => {
+    const user = await authenticate();
+    if (!user.errors) {
+      setAuthenticated(true);
+      setCurrentUser(user);
+    }
+    setLoaded(true);
+  };
+
   useEffect(() => {
-    (async () => {
-      const user = await authenticate();
-      if (!user.errors) {
-        setAuthenticated(true);
-        setCurrentUser(user);
-      }
-      setLoaded(true);
-    })();
+    authenticateUser();
   }, []);
 
   return (
@@ -70,7 +70,7 @@ function App() {
           exact={true}
           authenticated={authenticated}
         >
-          <CommodityShowPage />
+          <CommodityShowPage currentUser={currentUser} authenticateUser={authenticateUser}/>
         </ProtectedRoute>
       </Switch>
       <Footer />

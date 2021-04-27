@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { transaction } from '../services';
+import { transaction, user } from '../services';
 
 export default function Portfolio() {
   const [userTransactions, setUserTransactions] = useState(null);
@@ -11,11 +11,6 @@ export default function Portfolio() {
     setUserTransactions(fetchTransactions);
   };
 
-  const handleClick = async (transactionId) => {
-    const sellTransaction = await transaction.sellTransaction(transactionId);
-    const fetchTransactions = await transaction.getTransactions({ id });
-    setUserTransactions(fetchTransactions);
-  };
 
   useEffect(() => {
     fetchTransaction();
@@ -47,9 +42,6 @@ export default function Portfolio() {
                       </p>
                     </div>
                   </div>
-                  <button onClick={(e) => handleClick(transaction.id)}>
-                    Sell
-                  </button>
                 </div>
               ))
             : ''}

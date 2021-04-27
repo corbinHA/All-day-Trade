@@ -19,22 +19,25 @@ def getUserTransactions(id):
 @transaction_routes.route('', methods=["POST"])
 def newTransaction():
     data = request.get_json()
+    print(data)
     transaction = Transaction(
         user_id=current_user.get_id(),
         commodity_id=data['id'],
         amount=data['amount'],
         price=data['price'],
+        buy_sell=data['buy_sell']
     )
     user = User.query.get(transaction.user_id)
-    error = ""
-    if user.balance < transaction.amount * transaction.price:
-        error = "insufficient balance to buy this commodity"
-    if error:
-        return {"error": error}, 400
-    user.balance = float(user.balance) - float(transaction.amount) * float(transaction.price)
+
+    if transaction.buy_sell == True:
+        user.balance = float(user.balance) - float(transaction.amount) * float(transaction.price)
+    else:
+        user.balance = float(user.balance) + float(transaction.amount) * float(transaction.price)
+
     db.session.add(transaction)
     db.session.commit()
     return transaction.to_dict()
+
 
 
 
@@ -50,7 +53,7 @@ def sellTransaction(id):
     if error:
         return {"error": error}, 400
     user = User.query.get(user_id)
-    user.balance = float(user.balance) + float(transaction.amount) * float(transaction.price)
+    
     db.session.remove(transaction)
     db.session.commit()
     return "Yay"

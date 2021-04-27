@@ -9,6 +9,9 @@ import './NavBar.css';
 
 const NavBar = ({ setAuthenticated, authenticated, currentUser }) => {
   if (authenticated) {
+
+    console.log(currentUser);
+
     return (
       <Row className="navbar-wrapper w-100">
         <Col>
@@ -34,6 +37,11 @@ const NavBar = ({ setAuthenticated, authenticated, currentUser }) => {
             </li>
             <li>
               <LogoutButton setAuthenticated={setAuthenticated} />
+            </li>
+            <li>
+              <div>
+                {currentUser.balance}
+              </div>
             </li>
           </ul>
         </Col>

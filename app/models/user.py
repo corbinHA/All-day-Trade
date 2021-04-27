@@ -33,5 +33,6 @@ class User(db.Model, UserMixin):
             "id": self.id,
             "fullname": self.fullname,
             "username": self.username,
-            "email": self.email
+            "email": self.email,
+            "balance": str(self.balance),
         }
