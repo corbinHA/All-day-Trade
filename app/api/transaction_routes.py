@@ -38,23 +38,3 @@ def newTransaction():
     db.session.commit()
     return transaction.to_dict()
 
-
-
-
-@transaction_routes.route('/<id>', methods=["POST"])
-def sellTransaction(id):
-    data = request.get_json()
-    user_id = current_user.get_id()
-    transaction = Transaction.query.get(id)
-    error = ""
-    if not transaction:
-        error = "Could not find transactions"
-
-    if error:
-        return {"error": error}, 400
-    user = User.query.get(user_id)
-    
-    db.session.remove(transaction)
-    db.session.commit()
-    return "Yay"
-    
