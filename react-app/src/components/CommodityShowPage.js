@@ -38,7 +38,7 @@ const CommodityShowPage = (props) => {
   };
 
   const fetchUserCommodities = async () => {
-    const userCommodityInfo = user.getUserCommodities( props.currentUser.id )
+    const userCommodityInfo = await user.getUserCommodities( props.currentUser.id )
     setUserCommodities(userCommodityInfo)
   }
 
@@ -85,10 +85,10 @@ const CommodityShowPage = (props) => {
     //   setError("You do not own any amount of this commodity!");
     //   return;
     // } 
-      if (userCommodities[latestCommodityItem.name] < amount) {
-        setError("Not enough commodity owned to sell");
-        return;
-      }
+      // if (userCommodities[latestCommodityItem.name] < amount) {
+      //   setError("Not enough commodity owned to sell");
+      //   return;
+      // }
 
     await transaction.createTransaction({
       id: latestCommodityItem.commodity_id,
