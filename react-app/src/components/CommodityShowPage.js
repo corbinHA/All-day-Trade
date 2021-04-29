@@ -9,7 +9,7 @@ import {
   XAxis,
   YAxis,
 } from 'react-vis';
-import { createTransaction } from '../services/transaction';
+
 
 const makeDataPoint = (item) => {
   let y = (item.high + item.low) / 2;
@@ -44,7 +44,6 @@ const CommodityShowPage = (props) => {
 
   useEffect(() => {
     fetchCommodity();
-    fetchUserCommodities();
   }, []);
 
   if (commodityItems === null) return <h3>loading</h3>;
@@ -80,6 +79,8 @@ const CommodityShowPage = (props) => {
 
   const handleSell = async (e) => {
     e.preventDefault();
+    // const userCommodityInfo = await user.getUserCommodities( props.currentUser.id )
+    await fetchUserCommodities();
     console.log(userCommodities)
     // if (!userCommodities.hasOwnProperty(`${latestCommodityItem.name}`)) {
     //   setError("You do not own any amount of this commodity!");
