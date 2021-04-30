@@ -80,7 +80,8 @@ const CommodityShowPage = (props) => {
 
   const handleSell = async (e) => {
     e.preventDefault();
-    if (!(commodityInfo.name in userCommodities)) {
+    console.log(userCommodities)
+    if (userCommodities[commodityInfo.name] ===0 ) {
       setError("You do not own any amount of this commodity!");
       return;
     } 

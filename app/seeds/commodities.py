@@ -156,6 +156,160 @@ def seed_commodities():
     p15.commodity = gold
     db.session.add(p15)
 
+    cotton = Commodity(
+        name="Cotton",
+        symbol="CT")
+
+    c1 = PricePoint(
+        high=.90,
+        low=.83,
+        open_price=.85,
+        last_price=.89,
+        price_date="2021-01-19"
+    )
+    c1.commodity = cotton
+    db.session.add(c1)
+
+    c2 = PricePoint(
+        high=.91,
+        low=.79,
+        open_price=.89,
+        last_price=.82,
+        price_date="2021-01-18"
+    )
+    c2.commodity = cotton
+    db.session.add(c2)
+
+    c3 = PricePoint(
+        high=.85,
+        low=.82,
+        open_price=.82,
+        last_price=.85,
+        price_date="2021-01-17"
+    )
+    c3.commodity = cotton
+    db.session.add(c3)
+
+    c4 = PricePoint(
+        high=.93,
+        low=.81,
+        open_price=.85,
+        last_price=.90,
+        price_date="2021-01-16"
+    )
+    c4.commodity = cotton
+    db.session.add(c4)
+
+    c5 = PricePoint(
+        high=.90,
+        low=.77,
+        open_price=.90,
+        last_price=.78,
+        price_date="2021-01-15"
+    )
+    c5.commodity = cotton
+    db.session.add(c5)
+
+    c6 = PricePoint(
+        high=.88,
+        low=.76,
+        open_price=.78,
+        last_price=.86,
+        price_date="2021-01-14"
+    )
+    c6.commodity = cotton
+    db.session.add(c6)
+
+    c7 = PricePoint(
+        high=.88,
+        low=.84,
+        open_price=.86,
+        last_price=.88,
+        price_date="2021-01-13"
+    )
+    c7.commodity = cotton
+    db.session.add(c7)
+
+    c8 = PricePoint(
+        high=.92,
+        low=.85,
+        open_price=.88,
+        last_price=.89,
+        price_date="2021-01-12"
+    )
+    c8.commodity = cotton
+    db.session.add(c8)
+
+    c9 = PricePoint(
+        high=.89,
+        low=.80,
+        open_price=.89,
+        last_price=.83,
+        price_date="2021-01-11"
+    )
+    c9.commodity = cotton
+    db.session.add(c9)
+
+    c10 = PricePoint(
+        high=.85,
+        low=.83,
+        open_price=.83,
+        last_price=.84,
+        price_date="2021-01-10"
+    )
+    c10.commodity = cotton
+    db.session.add(c10)
+
+    c11 = PricePoint(
+        high=.86,
+        low=.80,
+        open_price=.84,
+        last_price=.82,
+        price_date="2021-01-09"
+    )
+    c11.commodity = cotton
+    db.session.add(c11)
+
+    c12 = PricePoint(
+        high=.84,
+        low=.80,
+        open_price=.84,
+        last_price=.81,
+        price_date="2021-01-08"
+    )
+    c12.commodity = cotton
+    db.session.add(c12)
+
+    c13 = PricePoint(
+        high=.89,
+        low=.81,
+        open_price=.81,
+        last_price=.87,
+        price_date="2021-01-07"
+    )
+    c13.commodity = cotton
+    db.session.add(c13)
+
+    c14 = PricePoint(
+        high=.87,
+        low=.81,
+        open_price=.87,
+        last_price=.81,
+        price_date="2021-01-06"
+    )
+    c14.commodity = cotton
+    db.session.add(c14)
+
+    c15 = PricePoint(
+        high=.85,
+        low=.77,
+        open_price=.81,
+        last_price=.80,
+        price_date="2021-01-05"
+    )
+    c15.commodity = cotton
+    db.session.add(c15)
+
     db.session.commit()
 
 
