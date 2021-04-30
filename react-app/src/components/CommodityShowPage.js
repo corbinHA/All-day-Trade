@@ -44,6 +44,7 @@ const CommodityShowPage = (props) => {
 
   useEffect(() => {
     fetchCommodity();
+    fetchUserCommodities();
   }, []);
 
   if (commodityItems === null) return <h3>loading</h3>;
@@ -79,17 +80,15 @@ const CommodityShowPage = (props) => {
 
   const handleSell = async (e) => {
     e.preventDefault();
-    // const userCommodityInfo = await user.getUserCommodities( props.currentUser.id )
-    await fetchUserCommodities();
-    console.log(userCommodities)
-    // if (!userCommodities.hasOwnProperty(`${latestCommodityItem.name}`)) {
-    //   setError("You do not own any amount of this commodity!");
-    //   return;
-    // } 
-      // if (userCommodities[latestCommodityItem.name] < amount) {
-      //   setError("Not enough commodity owned to sell");
-      //   return;
-      // }
+    if (!(commodityInfo.name in userCommodities)) {
+      setError("You do not own any amount of this commodity!");
+      return;
+    } 
+
+    if (userCommodities[commodityInfo.name] < amount) {
+      setError("Not enough commodity owned to sell");
+      return;
+    }
 
     await transaction.createTransaction({
       id: latestCommodityItem.commodity_id,
