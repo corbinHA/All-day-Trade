@@ -36,9 +36,12 @@ const NavBar = ({ setAuthenticated, authenticated, currentUser }) => {
             <li>
               <LogoutButton setAuthenticated={setAuthenticated} />
             </li>
-            <li>
-              <div>
-                {currentUser.balance}
+            <li className="balance-wrapper">
+              <div className="balance-div-title">
+                Balance:
+              </div>
+              <div className="balance-div-amount">
+                ${currentUser.balance}
               </div>
             </li>
           </ul>

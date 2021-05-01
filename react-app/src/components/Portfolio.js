@@ -19,23 +19,26 @@ export default function Portfolio() {
   return (
     <div className="commodity-wrapper">
       <div className="home-content-wrapper">
-        <div>
+        <div className="transaction-wrapper">
+          <h1 className="transaction-title">
+            Transaction History:
+          </h1>
           {userTransactions
             ? userTransactions.transactions.map((transaction, idx) => (
-                <div key={idx}>
-                  <h1 className="commodity-name">
+                <div key={idx} className="transaction-history">
+                  <h1 className="transaction-name">
                     {transaction.commodity.name}
                   </h1>
-                  <div className="">
-                    <div>
+                  <div className="transaction-info">
+                    <div className="transaction">
                       <label>Amount Bought</label>
                       <p className="commodity-symbol">{transaction.amount}</p>
                     </div>
-                    <div>
+                    <div className="transaction">
                       <label>Price Bought at</label>
                       <p className="commodity-symbol">{transaction.price}</p>
                     </div>
-                    <div>
+                    <div className="transaction">
                       <label>Total cost</label>
                       <p className="commodity-symbol">
                         {transaction.price * transaction.amount}

@@ -9,11 +9,13 @@ export default function CommodityCard({ commodity }) {
       <Link to={`/commodity/${commodity.symbol}`}>
         <div>
           <h1 className="commodity-name">
-            {commodity.name} <img src={Ingot} className="commodity-icon" />
+            {commodity.name} 
           </h1>
           <div className="">
             <p className="commodity-symbol">{commodity.symbol}</p>
-            <div>${commodity.price_points[0].last_price}</div>
+            <div className="commodity-price">
+              Current Price: ${commodity.price_points[0].last_price}
+            </div>
           </div>
         </div>
       </Link>

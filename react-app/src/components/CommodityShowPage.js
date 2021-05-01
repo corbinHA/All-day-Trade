@@ -81,13 +81,13 @@ const CommodityShowPage = (props) => {
   const handleSell = async (e) => {
     e.preventDefault();
     console.log(userCommodities)
-    if (userCommodities[commodityInfo.name] ===0 ) {
-      setError("You do not own any amount of this commodity!");
+    if (userCommodities[commodityInfo.name] === 0) {
+      setError("You do not own any amount of this commodity.");
       return;
     } 
 
     if (userCommodities[commodityInfo.name] < amount) {
-      setError("Not enough commodity owned to sell");
+      setError("You do not own enough to sell this amount.");
       return;
     }
 
@@ -127,9 +127,15 @@ const CommodityShowPage = (props) => {
                 onChange={handleChange}
               />
             </div>
-            <button className="general-button-green" onClick={handleBuy}>Buy</button>
-            <button className="general-button-green" onClick={handleSell}>Sell</button>
-            <div>{error}</div>
+            <button className="general-button-green" onClick={handleBuy}>
+              Buy
+            </button>
+            <button className="general-button-green" onClick={handleSell}>
+              Sell
+            </button>
+            <div className="error-disclaimer">
+              {error}
+            </div>
           </form>
         </div>
       </div>

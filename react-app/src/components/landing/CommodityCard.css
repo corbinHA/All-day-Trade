@@ -9,7 +9,9 @@
   align-content: center;
 }
 .home-content-wrapper {
-  width: 45%;
+  width: 80%;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .card {
@@ -37,7 +39,14 @@
   font-family: 'Open Sans', sans-serif;
   color: white;
   font-size: 12px;
-  font-weight: 300;
+  font-weight: 600;
+}
+
+.commodity-price {
+  font-family: 'Open Sans', sans-serif;
+  color: white;
+  font-size: 12px;
+  /* font-weight: 300; */
 }
 
 .commodity-icon {
@@ -95,4 +104,56 @@
   justify-content: center;
   /* align-items: center; */
   align-content: center;
+}
+
+.error-disclaimer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  font-weight: 525;
+  font-size: large;
+  color: #ee0505;
+}
+
+
+.transaction-history {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  padding: 5px 10px;
+  width: 300px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  
+}
+
+.transaction-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.transaction {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+}
+
+.transaction-name {
+  font-family: 'Open Sans', sans-serif;
+  color: white;
+  font-size: 12px;
+  font-weight: 800;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+.transaction-title {
+  font-family: 'Open Sans', sans-serif;
+  color: white;
+  text-decoration: underline;
 }
