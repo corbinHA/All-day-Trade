@@ -37,7 +37,7 @@ def user(id):
 @user_routes.route('/<int:id>/watchlist')
 @login_required
 def getUserWatchlist(id):
-    wl = Watchlist.filter_by(user_id="id").all()
+    wl = Watchlist.query.filter_by(user_id=id).all()
     return wl.to_dict()
 
 
@@ -46,7 +46,7 @@ def getUserWatchlist(id):
 def addToWatchlist():
     data = request.get_json()
     user = User.query.get(data['id'])
-    commodity = Commodity.get(data['commodity_id'])
+    commodity = Commodity.query.get(data['commodity_id'])
     wl = Watchlist(user=user)
     wl.commodities.append(commodity)   
 
@@ -60,7 +60,7 @@ def addToWatchlist():
 def removeFromWatchlist():
     data = request.get_json()
     user = User.query.get(data['id'])
-    commodity = Commodity.get(data['commodity_id'])
+    commodity = Commodity.query.get(data['commodity_id'])
     wl = Watchlist.query.get(user.id)
     wl.commodities.remove(commodity)   
 

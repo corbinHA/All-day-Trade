@@ -18,6 +18,7 @@ export const getUsersWatchlist = async (id) => {
 
 export const addToWatchlist = async ({ id, commodity_id }) => {
   const response = await fetch(`/api/users/${id}/watchlist`, {
+    method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
@@ -31,6 +32,7 @@ export const addToWatchlist = async ({ id, commodity_id }) => {
 
 export const removeFromWatchlist = async ({ id, commodity_id }) => {
   const response = await fetch(`/api/users/${id}/watchlist`, {
+    method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },

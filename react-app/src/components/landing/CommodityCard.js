@@ -10,15 +10,16 @@ import  {
 } from 'react-icons/io'
 
 export default function CommodityCard({ commodity, currentUser }) {
-  const [ watch, setWatch ] = useState(null);
+  const [ watchlist, setWatchlist ] = useState({});
 
 
   const fetchWatchlist = async () => {
     const fetchWatchlist = await user.getUsersWatchlist(currentUser.id);
-    setWatch(fetchWatchlist)
-    console.log(watch)
+    setWatchlist(fetchWatchlist)
+    console.log(watchlist)
   }
-
+    
+  console.log(commodity.id)
 
   useEffect(() => {
     fetchWatchlist()
@@ -30,7 +31,7 @@ export default function CommodityCard({ commodity, currentUser }) {
       id: currentUser.id,
       commodity_id: commodity.id
     });
-    fetchWatchlist();
+    await fetchWatchlist();
   }
 
   const handleRemove = async (e) => {
@@ -39,33 +40,37 @@ export default function CommodityCard({ commodity, currentUser }) {
       id: currentUser.id,
       commodity_id: commodity.id
     });
-    fetchWatchlist();
+    await fetchWatchlist();
   }
 
 
   return (
     <div className="card">
+      <div>
+        { commodity.id in watchlist ? (
+          <IoIosEye
+            className='commodity-eye'
+          />,
+          <IoIosEyeOff 
+            onClick={handleRemove}
+            className='commodity-eye-remove'
+          />
+        ) : (
+          <IoIosAddCircleOutline
+            className="commodity-add-outline"
+          />,
+          <IoIosAddCircle 
+          className="commodity-add"
+          onClick={handleAdd}
+          />
+        )}
+      </div>
       <Link to={`/commodity/${commodity.symbol}`}>
         <div>
-          <div>
-            <div>
-              {watch.hasOwnProperty(commodity.id) ? (
-                <IoIosEye
-                  onClick={handleRemove}
-                  style={{ color: 'white' }}
-                />
-              ) : (
-                <IoIosAddCircleOutline
-                  onClick={handleAdd}
-                  style={{ color: 'white' }}
-                />
-              )}
-            </div>
 
             <h1 className="commodity-name">
               {commodity.name} 
             </h1>
-          </div>
             
           <div className="">
             <p className="commodity-symbol">{commodity.symbol}</p>

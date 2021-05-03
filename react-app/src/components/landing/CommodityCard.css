@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap%27');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap%27");
 
 .commodity-wrapper {
   height: calc(100vh - 21.5vh);
@@ -29,21 +29,21 @@
 }
 
 .commodity-name {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   color: white;
   font-size: 12px;
   font-weight: 800;
 }
 
 .commodity-symbol {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   color: white;
   font-size: 12px;
   font-weight: 600;
 }
 
 .commodity-price {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   color: white;
   font-size: 12px;
   /* font-weight: 300; */
@@ -75,7 +75,7 @@
   margin: 0;
 }
 
-.input[type='number'] {
+.input[type="number"] {
   -moz-appearance: textfield;
 }
 
@@ -85,7 +85,7 @@
 }
 
 .commodity-info-name {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   color: white;
   font-size: 45px;
   font-weight: 800;
@@ -116,7 +116,6 @@
   color: #ee0505;
 }
 
-
 .transaction-history {
   display: flex;
   flex-direction: column;
@@ -125,7 +124,6 @@
   width: 300px;
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  
 }
 
 .transaction-info {
@@ -142,7 +140,7 @@
 }
 
 .transaction-name {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   color: white;
   font-size: 12px;
   font-weight: 800;
@@ -153,7 +151,35 @@
 }
 
 .transaction-title {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   color: white;
   text-decoration: underline;
+}
+
+.commodity-eye {
+  color: white;
+  size: 20px;
+}
+
+.commodity-eye-remove {
+  color: white;
+  size: 20px;
+}
+
+.commodity-add {
+  color: white;
+  size: 200px;
+  display: none;
+}
+
+.commodity-add-outline {
+  color: white;
+  size: 400px;
+}
+.commodity-add-outline:hover {
+  display: none;
+}
+
+.commodity-add:hover {
+  display: inline;
 }
