@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { transaction } from '../services';
+import Watchlist from './Watchlist'
 
-export default function Portfolio() {
+export default function Portfolio(props) {
   const [userTransactions, setUserTransactions] = useState(null);
   const { id } = useParams();
 
@@ -59,6 +60,7 @@ export default function Portfolio() {
               ))
             : ''}
         </div>
+        <Watchlist currentUser={props.currentUser} />
       </div>
     </div>
   );

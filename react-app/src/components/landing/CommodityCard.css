@@ -169,17 +169,16 @@
 .commodity-add {
   color: white;
   size: 200px;
-  display: none;
 }
 
 .commodity-add-outline {
   color: white;
   size: 400px;
 }
-.commodity-add-outline:hover {
+/* .commodity-add-outline:hover {
   display: none;
 }
 
 .commodity-add:hover {
   display: inline;
-}
+} */

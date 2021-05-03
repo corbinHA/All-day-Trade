@@ -26,10 +26,8 @@ class Watchlist(db.Model):
         return {
             "id": self.id,
             "user_id": self.user_id,
-            "commodity_id": self.commodity_id,
-            "price": self.price,
-            "created_at": self.created_at,
-            "commodity": self.commodities.to_dict()
+            "commodities": [ commodity.to_dict() for commodity in self.commodities ]
+
         }
 
 

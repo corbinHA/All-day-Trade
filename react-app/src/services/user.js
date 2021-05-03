@@ -23,7 +23,6 @@ export const addToWatchlist = async ({ id, commodity_id }) => {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      id,
       commodity_id,
     }),
   });
@@ -32,12 +31,11 @@ export const addToWatchlist = async ({ id, commodity_id }) => {
 
 export const removeFromWatchlist = async ({ id, commodity_id }) => {
   const response = await fetch(`/api/users/${id}/watchlist`, {
-    method: 'POST',
+    method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      id,
       commodity_id,
     }),
   });

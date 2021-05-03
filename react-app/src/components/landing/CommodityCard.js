@@ -10,16 +10,14 @@ import  {
 } from 'react-icons/io'
 
 export default function CommodityCard({ commodity, currentUser }) {
-  const [ watchlist, setWatchlist ] = useState({});
+  const [ watchlist, setWatchlist ] = useState(null);
 
 
   const fetchWatchlist = async () => {
     const fetchWatchlist = await user.getUsersWatchlist(currentUser.id);
     setWatchlist(fetchWatchlist)
-    console.log(watchlist)
+    console.log(fetchWatchlist)
   }
-    
-  console.log(commodity.id)
 
   useEffect(() => {
     fetchWatchlist()
@@ -41,28 +39,33 @@ export default function CommodityCard({ commodity, currentUser }) {
       commodity_id: commodity.id
     });
     await fetchWatchlist();
-  }
+  };
 
+  const isWatching = watchlist && watchlist.commodities.some((com) => com.id === commodity.id)
 
   return (
     <div className="card">
       <div>
-        { commodity.id in watchlist ? (
-          <IoIosEye
-            className='commodity-eye'
-          />,
-          <IoIosEyeOff 
-            onClick={handleRemove}
-            className='commodity-eye-remove'
-          />
+        { isWatching ? (
+          <>
+            <IoIosEye
+              className='commodity-eye'
+            />
+            <IoIosEyeOff 
+              onClick={handleRemove}
+              className='commodity-eye-remove'
+            />
+          </>
         ) : (
-          <IoIosAddCircleOutline
-            className="commodity-add-outline"
-          />,
-          <IoIosAddCircle 
-          className="commodity-add"
-          onClick={handleAdd}
-          />
+          <>
+            <IoIosAddCircleOutline
+              className="commodity-add-outline"
+            />
+            <IoIosAddCircle 
+              className="commodity-add"
+              onClick={handleAdd}
+            />
+          </>
         )}
       </div>
       <Link to={`/commodity/${commodity.symbol}`}>

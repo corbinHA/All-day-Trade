@@ -60,7 +60,7 @@ function App() {
           authenticated={authenticated}
           currentUser={currentUser}
         >
-          <Portfolio />
+          <Portfolio currentUser={currentUser}/>
         </ProtectedRoute>
         <ProtectedRoute path="/home" exact={true} authenticated={authenticated}>
           <Home currentUser={currentUser} />
