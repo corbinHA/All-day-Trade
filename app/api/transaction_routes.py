@@ -19,7 +19,6 @@ def getUserTransactions(id):
 @transaction_routes.route('', methods=["POST"])
 def newTransaction():
     data = request.get_json()
-    print(data)
     transaction = Transaction(
         user_id=current_user.get_id(),
         commodity_id=data['id'],

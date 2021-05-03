@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
-from flask_login import login_required
-from app.models import User
+from flask_login import login_required, current_user
+from app.models import User, Watchlist
 
 user_routes = Blueprint('users', __name__)
 
@@ -32,3 +32,50 @@ def getUserCommodities(id):
 def user(id):
     user = User.query.get(id)
     return user.to_dict()
+
+
+@user_routes.route('/<int:id>/watchlist')
+@login_required
+def getUserWatchlist(id):
+    wl = Watchlist.filter_by(user_id="id").all()
+    return wl.to_dict()
+
+
+@user_routes.route('/<int:id>/watchlist', methods=["POST"])
+@login_required
+def addToWatchlist():
+    data = request.get_json()
+    user = User.query.get(data['id'])
+    commodity = Commodity.get(data['commodity_id'])
+    wl = Watchlist(user=user)
+    wl.commodities.append(commodity)   
+
+    db.session.add(wl)
+    db.session.commit()
+    return wl.to_dict()
+
+
+@user_routes.route('/<int:id>/watchlist', methods=["POST"])
+@login_required
+def removeFromWatchlist():
+    data = request.get_json()
+    user = User.query.get(data['id'])
+    commodity = Commodity.get(data['commodity_id'])
+    wl = Watchlist.query.get(user.id)
+    wl.commodities.remove(commodity)   
+
+    db.session.add(wl)
+    db.session.commit()
+    return wl.to_dict()
+
+
+
+
+
+
+# POST user/id/watchlist body { commod_id: 3 }
+# user = User.get(id)
+# commodity = Commodity.get(commod_id)
+# wl = WatchList.create({ user=user })
+# wl.commodities.append(commodity)
+#  

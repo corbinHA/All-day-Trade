@@ -21,10 +21,10 @@ const makeDataPoint = (item) => {
 
 const CommodityShowPage = (props) => {
   const [ error, setError ] = useState(null);
-  const [commodityItems, setCommodityItems] = useState(null);
-  const [commodityInfo, setCommodityInfo] = useState(null);
-  const [ userCommodities, setUserCommodities] = useState(null);
-  const [amount, setAmount] = useState(1);
+  const [ commodityItems, setCommodityItems ] = useState(null);
+  const [ commodityInfo, setCommodityInfo ] = useState(null);
+  const [ userCommodities, setUserCommodities ] = useState(null);
+  const [ amount, setAmount ] = useState(1);
   const { symbol } = useParams();
   const history = useHistory();
 
@@ -80,7 +80,6 @@ const CommodityShowPage = (props) => {
 
   const handleSell = async (e) => {
     e.preventDefault();
-    console.log(userCommodities)
     if (userCommodities[commodityInfo.name] === 0) {
       setError("You do not own any amount of this commodity.");
       return;

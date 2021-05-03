@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Redirect } from 'react-router-dom';
-import styled from 'styled-components';
 import CommodityCard from './CommodityCard';
 
-export default function Home() {
+export default function Home(props) {
   const [commodities, setCommodities] = useState({});
 
   useEffect(() => {
@@ -21,7 +20,7 @@ export default function Home() {
       <div className="home-content-wrapper">
         {commodities.length
           ? commodities.map((commodity, idx) => (
-              <CommodityCard key={idx} commodity={commodity} />
+              <CommodityCard key={idx} commodity={commodity} currentUser={props.currentUser} />
             ))
           : ''}
       </div>

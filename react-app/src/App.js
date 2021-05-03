@@ -63,7 +63,7 @@ function App() {
           <Portfolio />
         </ProtectedRoute>
         <ProtectedRoute path="/home" exact={true} authenticated={authenticated}>
-          <Home />
+          <Home currentUser={currentUser} />
         </ProtectedRoute>
         <ProtectedRoute
           path="/commodity/:symbol"

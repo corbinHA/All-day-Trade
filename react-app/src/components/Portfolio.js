@@ -31,15 +31,25 @@ export default function Portfolio() {
                   </h1>
                   <div className="transaction-info">
                     <div className="transaction">
-                      <label>Amount Bought</label>
-                      <p className="commodity-symbol">{transaction.amount}</p>
+                      <label>
+                        Amount Bought
+                      </label>
+                      <p className="commodity-symbol">
+                        {transaction.amount}
+                      </p>
                     </div>
                     <div className="transaction">
-                      <label>Price Bought at</label>
-                      <p className="commodity-symbol">{transaction.price}</p>
+                      <label>
+                        Price Bought at
+                      </label>
+                      <p className="commodity-symbol">
+                        {transaction.price}
+                      </p>
                     </div>
                     <div className="transaction">
-                      <label>Total cost</label>
+                      <label>
+                        Total cost
+                      </label>
                       <p className="commodity-symbol">
                         {transaction.price * transaction.amount}
                       </p>
