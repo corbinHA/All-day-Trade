@@ -27,35 +27,71 @@ export default function Portfolio(props) {
           {userTransactions
             ? userTransactions.transactions.map((transaction, idx) => (
                 <div key={idx} className="transaction-history">
-                  <h1 className="transaction-name">
-                    {transaction.commodity.name}
-                  </h1>
-                  <div className="transaction-info">
-                    <div className="transaction">
-                      <label>
-                        Amount Bought
-                      </label>
-                      <p className="commodity-symbol">
-                        {transaction.amount}
-                      </p>
-                    </div>
-                    <div className="transaction">
-                      <label>
-                        Price Bought at
-                      </label>
-                      <p className="commodity-symbol">
-                        {transaction.price}
-                      </p>
-                    </div>
-                    <div className="transaction">
-                      <label>
-                        Total cost
-                      </label>
-                      <p className="commodity-symbol">
-                        {transaction.price * transaction.amount}
-                      </p>
-                    </div>
-                  </div>
+                  {transaction["buy/sell"] ? (
+                    <>
+                      <h1 className="transaction-name">
+                        {transaction.commodity.name}
+                      </h1>
+                      <div className="transaction-info">
+                        <div className="transaction">
+                          <label className="transaction-label">
+                            Amount Bought
+                          </label>
+                          <p className="commodity-symbol">
+                            {transaction.amount}
+                          </p>
+                        </div>
+                        <div className="transaction">
+                          <label className="transaction-label">
+                            Price Bought at
+                          </label>
+                          <p className="commodity-symbol">
+                            {transaction.price}
+                          </p>
+                        </div>
+                        <div className="transaction">
+                          <label className="transaction-label">
+                            Total
+                          </label>
+                          <p className="commodity-symbol">
+                            {transaction.price * transaction.amount}
+                          </p>
+                        </div>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <h1 className="transaction-name">
+                        {transaction.commodity.name}
+                      </h1>
+                      <div className="transaction-info">
+                        <div className="transaction">
+                          <label className="transaction-label">
+                            Amount Sold
+                          </label>
+                          <p className="commodity-symbol">
+                            {transaction.amount}
+                          </p>
+                        </div>
+                        <div className="transaction">
+                          <label className="transaction-label">
+                            Price Sold at
+                          </label>
+                          <p className="commodity-symbol">
+                            {transaction.price}
+                          </p>
+                        </div>
+                        <div className="transaction">
+                          <label className="transaction-label">
+                            Total
+                          </label>
+                          <p className="commodity-symbol">
+                            {transaction.price * transaction.amount}
+                          </p>
+                        </div>
+                      </div>
+                    </>
+                  )}
                 </div>
               ))
             : ''}

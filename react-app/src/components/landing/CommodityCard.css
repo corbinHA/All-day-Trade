@@ -124,6 +124,16 @@
   width: 300px;
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background: #4c5058;
+}
+
+.transaction-wrapper {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  padding: 0px 20px;
 }
 
 .transaction-info {
@@ -156,6 +166,12 @@
   text-decoration: underline;
 }
 
+.transaction-label {
+  font-family: "Open Sans", sans-serif;
+  color: white;
+  text-decoration: underline;
+}
+
 .commodity-eye {
   color: white;
   size: 20px;
@@ -175,10 +191,21 @@
   color: white;
   size: 400px;
 }
-/* .commodity-add-outline:hover {
+
+/* .commodity-add-outline:hover,
+.commodity-add {
   display: none;
 }
 
 .commodity-add:hover {
   display: inline;
 } */
+
+.watchlist-wrapper {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  padding: 0px 20px;
+}

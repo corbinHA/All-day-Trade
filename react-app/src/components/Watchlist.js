@@ -17,12 +17,14 @@ export default function Watchlist(props) {
   if (watchlist === null) return <div>loading</div>;
 
   return (
-      <div>
-          {watchlist.commodities.map((el) => {
-              return <div key={el.id}>
-                  {el.name}
-                  {el.symbol}
+      <div className="watchlist-wrapper">
+          {watchlist.commodities.map((commoditiy) => {
+              return (
+              <div key={commoditiy.id}>
+                  {commoditiy.name}
+                  {commoditiy.symbol}
               </div>
+              )
           })}
       </div>
   )
