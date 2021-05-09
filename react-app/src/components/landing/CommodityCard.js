@@ -1,16 +1,14 @@
-import React, { useEffect, useState }from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { user } from '../../services';
 import './CommodityCard.css';
-import  { 
-  IoIosAddCircleOutline, 
-  IoIosAddCircle, 
-  IoIosEye, 
-  IoIosEyeOff 
+import {
+  IoIosEye,
+  IoIosEyeOff
 } from 'react-icons/io'
 
 export default function CommodityCard({ commodity, currentUser }) {
-  const [ watchlist, setWatchlist ] = useState(null);
+  const [watchlist, setWatchlist] = useState(null);
 
 
   const fetchWatchlist = async () => {
@@ -46,35 +44,25 @@ export default function CommodityCard({ commodity, currentUser }) {
   return (
     <div className="card">
       <div>
-        { isWatching ? (
-          <>
-            <IoIosEye
-              className='commodity-eye'
-            />
-            <IoIosEyeOff 
+        {isWatching ? (
+            <IoIosEyeOff
               onClick={handleRemove}
               className='commodity-eye-remove'
             />
-          </>
         ) : (
-          <>
-            <IoIosAddCircleOutline
-              className="commodity-add-outline"
-            />
-            <IoIosAddCircle 
+            <IoIosEye
               className="commodity-add"
               onClick={handleAdd}
             />
-          </>
         )}
       </div>
       <Link to={`/commodity/${commodity.symbol}`}>
         <div>
 
-            <h1 className="commodity-name">
-              {commodity.name} 
-            </h1>
-            
+          <h1 className="commodity-name">
+            {commodity.name}
+          </h1>
+
           <div className="">
             <p className="commodity-symbol">{commodity.symbol}</p>
             <div className="commodity-price">

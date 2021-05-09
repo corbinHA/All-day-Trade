@@ -138,8 +138,11 @@ const CommodityShowPage = (props) => {
           </form>
         </div>
       </div>
-      <div className="commodity-content-wrapper">
-        <div className="label commodity-info-name">{commodityInfo.name}</div>
+      <div className="commodity-content-wrapper_card">
+        <div className="label commodity-info-name_card">{commodityInfo.name}</div>
+        <div className="commodity-price_card">
+        Current Trading Price: ${latestCommodityItem.last_price}
+        </div>
       </div>
     </div>
   );

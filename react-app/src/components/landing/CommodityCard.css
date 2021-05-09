@@ -80,8 +80,8 @@
 }
 
 .commodity-price {
-  font-size: 20px;
-  font-weight: 800;
+  font-size: 14px;
+  font-weight: 600;
 }
 
 .commodity-info-name {
@@ -127,6 +127,19 @@
   background: #4c5058;
 }
 
+.transaction-history_watchlist {
+  display: flex;
+  height: 50px;
+  width: 100px;
+  flex-direction: column;
+  margin-top: 20px;
+  padding: 5px 10px;
+  width: 300px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background: #4c5058;
+}
+
 .transaction-wrapper {
   width: 400px;
   display: flex;
@@ -163,7 +176,7 @@
 .transaction-title {
   font-family: "Open Sans", sans-serif;
   color: white;
-  text-decoration: underline;
+  /* text-decoration: underline; */
 }
 
 .transaction-label {
@@ -192,14 +205,51 @@
   size: 400px;
 }
 
-/* .commodity-add-outline:hover,
-.commodity-add {
-  display: none;
+.commodity-price_watchlist {
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
 }
 
-.commodity-add:hover {
-  display: inline;
-} */
+.commodity-price_card {
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+.commodity-content-wrapper_card {
+  width: 400px;
+  padding: 10px;
+  /* background-color: #202225; */
+  margin-bottom: 40px;
+  margin-right: 40px;
+  margin-top: 40px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  /* align-items: center; */
+  /* align-content: center; */
+}
+
+.commodity-info-name_card {
+  font-family: "Open Sans", sans-serif;
+  color: white;
+  font-size: 45px;
+  font-weight: 800;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
 
 .watchlist-wrapper {
   width: 400px;
