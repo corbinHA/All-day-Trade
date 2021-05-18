@@ -4,6 +4,7 @@ import { commodity, transaction, user } from '../services';
 import {
   XYPlot,
   WhiskerSeries,
+  LineSeries,
   HorizontalGridLines,
   VerticalGridLines,
   XAxis,
@@ -12,11 +13,13 @@ import {
 
 
 const makeDataPoint = (item) => {
-  let y = (item.high + item.low) / 2;
-  let yVariance = item.high - y;
+  // let y = (item.high + item.low) / 2;
+  let y = item.last_price;
+  // let yVariance = item.high - y;
   let x = Date.parse(item.price_date) * 0.2;
-  let xVariance = 1;
-  return { x, y, yVariance, xVariance };
+  // let x = item.price_date;
+  // let xVariance = 1;
+  return { x, y };
 };
 
 const CommodityShowPage = (props) => {
@@ -106,11 +109,11 @@ const CommodityShowPage = (props) => {
         <div className="chart-page-wrapper">
           <div className="chart-wrapper">
             <XYPlot height={300} width={500} color={'#7289da'}>
-              {/* <XAxis tickValues />
-              <YAxis />
+              {/* <XAxis title="X" /> */}
+              {/* <YAxis /> */}
               <VerticalGridLines />
-              <HorizontalGridLines /> */}
-              <WhiskerSeries data={dataPoints} />
+              <HorizontalGridLines />
+              <LineSeries data={dataPoints} />
             </XYPlot>
           </div>
           <div className="label commodity-price">
