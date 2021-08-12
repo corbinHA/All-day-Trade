@@ -3,7 +3,6 @@ import { useParams, useHistory } from 'react-router-dom';
 import { commodity, transaction, user } from '../services';
 import {
   XYPlot,
-  WhiskerSeries,
   LineSeries,
   HorizontalGridLines,
   VerticalGridLines,
@@ -13,14 +12,11 @@ import {
 
 
 const makeDataPoint = (item) => {
-  // let y = (item.high + item.low) / 2;
   let y = item.last_price;
-  // let yVariance = item.high - y;
   let x = Date.parse(item.price_date) * 0.2;
-  // let x = item.price_date;
-  // let xVariance = 1;
   return { x, y };
 };
+
 
 const CommodityShowPage = (props) => {
   const [ error, setError ] = useState(null);
@@ -109,7 +105,7 @@ const CommodityShowPage = (props) => {
         <div className="chart-page-wrapper">
           <div className="chart-wrapper">
             <XYPlot height={300} width={500} color={'#7289da'}>
-              {/* <XAxis title="X" /> */}
+              {/* <XAxis title="Date" /> */}
               {/* <YAxis /> */}
               <VerticalGridLines />
               <HorizontalGridLines />
